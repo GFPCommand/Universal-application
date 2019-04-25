@@ -7,7 +7,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button flash, calc;
+    private Button flash, calc, game, converter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,8 +16,12 @@ public class MainActivity extends AppCompatActivity {
 
         flash = findViewById(R.id.flash);
         calc = findViewById(R.id.calc);
+        game = findViewById(R.id.game);
+        converter = findViewById(R.id.conv);
 
         flash.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, FlashActivity.class)));
         calc.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, CalcActivity.class)));
+        game.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, GameActivity.class)));
+        converter.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ConverterActivity.class)));
     }
 }

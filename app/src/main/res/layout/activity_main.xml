@@ -1,30 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/calc"
-        android:layout_width="115"
-        android:layout_height="115"
-        android:layout_marginTop="210dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginRight="70dp"
-        android:text="Calculator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="415dp"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/flash"
-        android:layout_width="115"
-        android:layout_height="115"
-        android:layout_marginStart="70dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="210dp"
-        android:text="FlashLight"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/calc"
+            style="@android:style/Widget.Button"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="100dp"
+            android:layout_weight="0"
+            android:text="Calculator" />
+
+        <Button
+            android:id="@+id/flash"
+            style="@android:style/Widget.Button"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="100dp"
+            android:layout_weight="0"
+            android:text="Flashlight" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="415dp"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/game"
+            style="@android:style/Widget.Button"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="50dp"
+            android:layout_weight="0"
+            android:text="Game" />
+
+        <Button
+            android:id="@+id/conv"
+            style="@android:style/Widget.Button"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_weight="0"
+            android:text="Converter" />
+
+    </LinearLayout>
+</LinearLayout>
