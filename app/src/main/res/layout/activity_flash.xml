@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Gray"
     android:orientation="vertical"
     tools:context="com.GFPCommand.UAFA.FlashActivity">
 
     <Button
-        android:id="@+id/flash"
+        android:id="@+id/flashAct"
         android:layout_width="150dp"
         android:layout_height="75dp"
         android:layout_marginLeft="125dp"
