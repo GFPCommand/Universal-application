@@ -543,13 +543,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="1sp"
+            android:textSize="24sp"
             android:padding="8dp"
             android:textAllCaps="false"
             android:layout_marginRight="1dp"
             android:textColor="@color/calculator_color"
-            android:background="@drawable/deleteicon"
-            android:text="@string/single_delete" />
+            android:background="@color/calculator_foreground"
+            android:text="del" />
         <Button
             android:id="@+id/clear"
             android:layout_width="0dp"
