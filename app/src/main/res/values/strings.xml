@@ -22,11 +22,11 @@
     <string name="tan_sign">tan</string>
     <string name="natural_log">ln</string>
     <string name="log">log</string>
-    <string name="cube_root">3?</string>
+    <string name="cube_root">3√</string>
     <string name="cube">x3</string>
     <string name="one_over_x">1/x</string>
     <string name="x_power_y">Yx</string>
-    <string name="square_root">/</string>
+    <string name="square_root">√</string>
     <string name="x_square">x^2</string>
     <string name="percent">%</string>
     <string name="open_bracket">(</string>

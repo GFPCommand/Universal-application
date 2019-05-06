@@ -299,12 +299,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 toggleInverse();
                 toggleShiftButton();
                 break;
-            case "v":
+            case "√":
                 if(isInverse){
-                    currentDisplayedInput += "3v(";
+                    currentDisplayedInput += "3√(";
                     inputToBeParsed += "crt(";
                 }else{
-                    currentDisplayedInput += "v(";
+                    currentDisplayedInput += "√(";
                     inputToBeParsed += "sqrt(";
                 }
                 toggleInverse();
