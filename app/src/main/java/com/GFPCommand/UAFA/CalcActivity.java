@@ -162,7 +162,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case "1":
                 if(isInverse){
-                    currentDisplayedInput += "?";
+                    currentDisplayedInput += "pi";
                     inputToBeParsed += "pi";
                 }else{
                     currentDisplayedInput += "1";
@@ -404,43 +404,53 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         Button button = (Button) view;
         String data = button.getText().toString();
-        if(data.equals("AC")){
-            outputResult.setText("");
-            currentDisplayedInput = "";
-            inputToBeParsed = "";
-        }
-        else if(data.equals("del")){
-            String enteredInput = outputResult.getText().toString();
-            if(enteredInput.length() > 0){
-                enteredInput = enteredInput.substring(0, enteredInput.length() - 1);
-                currentDisplayedInput = enteredInput;
-                inputToBeParsed = enteredInput;
-                outputResult.setText(currentDisplayedInput);
+        switch (data) {
+            case "AC":
+                outputResult.setText("");
+                currentDisplayedInput = "";
+                inputToBeParsed = "";
+                break;
+            case "del": {
+                String enteredInput = outputResult.getText().toString();
+                if (enteredInput.length() > 0) {
+                    enteredInput = enteredInput.substring(0, enteredInput.length() - 1);
+                    currentDisplayedInput = enteredInput;
+                    inputToBeParsed = enteredInput;
+                    outputResult.setText(currentDisplayedInput);
+                }
+                break;
             }
-        }else if(data.equals("=")){
-            String enteredInput = outputResult.getText().toString();
-            String resultObject = mCalculator.getResult(currentDisplayedInput, inputToBeParsed);
-            outputResult.setText(removeTrailingZero(resultObject));
-        }else if(data.equals("Ans")){
-            String enteredInput = outputResult.getText().toString();
-            enteredInput += lastResultObtain;
-            outputResult.setText(enteredInput);
-        }else if(data.equals("SHIFT")){
-            if(!isInverse){
-                isInverse = true;
-            }else{
-                isInverse = false;
+            case "=": {
+                String enteredInput = outputResult.getText().toString();
+                String resultObject = mCalculator.getResult(currentDisplayedInput, inputToBeParsed);
+                outputResult.setText(removeTrailingZero(resultObject));
+                break;
             }
-            toggleShiftButton();
-        }else if(data.equals("RAD")){
-            buttonRad.setText("DEG");
-            degreeRad.setText("RAD");
-        }
-        else if(data.equals("DEG")){
-            buttonRad.setText("RAD");
-            degreeRad.setText("DEG");
-        }else{
-            obtainInputValues(data);
+            case "Ans": {
+                String enteredInput = outputResult.getText().toString();
+                enteredInput += lastResultObtain;
+                outputResult.setText(enteredInput);
+                break;
+            }
+            case "SHIFT":
+                if (!isInverse) {
+                    isInverse = true;
+                } else {
+                    isInverse = false;
+                }
+                toggleShiftButton();
+                break;
+            case "RAD":
+                buttonRad.setText("DEG");
+                degreeRad.setText("RAD");
+                break;
+            case "DEG":
+                buttonRad.setText("RAD");
+                degreeRad.setText("DEG");
+                break;
+            default:
+                obtainInputValues(data);
+                break;
         }
     }
     private String removeTrailingZero(String formattingInput){
@@ -504,5 +514,4 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         float value = settings.getFloat("key", 0);
         return value;
     }
-
 }

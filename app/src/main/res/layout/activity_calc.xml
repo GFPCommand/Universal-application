@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLay0"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -670,18 +671,20 @@
             android:textColor="@color/calculator_color"
             android:background="@color/calculator_foreground"
             android:text="@string/multiplication" />
+
         <Button
             android:id="@+id/division"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="24sp"
-            android:padding="8dp"
-            android:textAllCaps="false"
             android:layout_marginRight="1dp"
-            android:textColor="@color/calculator_color"
+            android:layout_weight="1"
             android:background="@color/calculator_foreground"
-            android:text="@string/division" />
+            android:padding="8dp"
+            android:text="@string/division"
+            android:textAllCaps="false"
+            android:textColor="@color/calculator_color"
+            android:textSize="24sp"
+            tools:text="/" />
     </LinearLayout>
     <!--Ten Row 5 Text-->
     <LinearLayout
