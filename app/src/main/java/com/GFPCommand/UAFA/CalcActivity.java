@@ -250,8 +250,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 currentDisplayedInput += "-";
                 inputToBeParsed += "-";
                 break;
-            case "?":
-                currentDisplayedInput += "?";
+            case "/":
+                currentDisplayedInput += "/";
                 inputToBeParsed += "/";
                 break;
             case "x":
@@ -268,8 +268,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case "%":
                 if(isInverse){
-                    currentDisplayedInput += "1?";
-                    inputToBeParsed += "1?";
+                    currentDisplayedInput += "1/";
+                    inputToBeParsed += "1/";
                 }else{
                     currentDisplayedInput += "%";
                     inputToBeParsed += "%";

@@ -3,12 +3,12 @@ package com.GFPCommand.UAFA;
 import android.hardware.Camera;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class FlashActivity extends AppCompatActivity {
+public class FlashActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button flashActivate;
     private TextView status;
@@ -20,14 +20,14 @@ public class FlashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         flashActivate = findViewById(R.id.flashAct);
 
-        flashActivate.setOnClickListener(v -> onClick());
+        flashActivate.setOnClickListener(this);
     }
 
-    public void onClick(){
+    @Override
+    public void onClick(View view){
         if (camera == null) {
             camera = Camera.open();
         }
