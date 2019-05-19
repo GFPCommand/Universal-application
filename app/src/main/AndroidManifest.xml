@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ConverterActivity"/>
-        <activity android:name=".GameActivity" />
+        <activity android:name=".ProtractorActivity" />
         <activity android:name=".CalcActivity" />
         <activity android:name=".FlashActivity" />
         <activity android:name=".MainActivity">

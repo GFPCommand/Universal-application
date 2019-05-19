@@ -162,7 +162,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case "1":
                 if(isInverse){
-                    currentDisplayedInput += "pi";
+                    currentDisplayedInput += "&pi";
                     inputToBeParsed += "pi";
                 }else{
                     currentDisplayedInput += "1";
@@ -503,14 +503,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     }
     static public boolean setPreference(Context c, float value) {
         SharedPreferences settings = c.getSharedPreferences(PREFS_NAME, 0);
-        settings = c.getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putFloat("key", value);
         return editor.commit();
     }
     static public float getPreference(Context c) {
         SharedPreferences settings = c.getSharedPreferences(PREFS_NAME, 0);
-        settings = c.getSharedPreferences(PREFS_NAME, 0);
         float value = settings.getFloat("key", 0);
         return value;
     }

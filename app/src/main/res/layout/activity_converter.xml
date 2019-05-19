@@ -5,52 +5,116 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.GFPCommand.UAFA.ConverterActivity">
+    tools:context="com.GFPCommand.UAFA.ConverterActivity"
+    android:background="@color/green">
 
     <EditText
         android:id="@+id/inputData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="enter number to convert"
-        android:inputType="numberDecimal" />
+        android:hint="@string/enter_values"
+        android:inputType="numberDecimal|numberSigned" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/but1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mm"
+            android:textAllCaps="false"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/but2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sm"
+            android:textAllCaps="false"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/but3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="m"
+            android:textAllCaps="false"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/but4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="km"
+            android:textAllCaps="false"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/numericSystems"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Numeric systems"
+            android:layout_weight="1"/>
+
+        <RadioButton
+            android:id="@+id/currencies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Currencies"
+            android:layout_weight="1"/>
+
+        <RadioButton
+            android:id="@+id/length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="false"
+            android:text="Lengths"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/bin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="BIN" />
+        <TextView
+            android:id="@+id/outputField1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
 
-        <Button
-            android:id="@+id/oct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="OCT" />
-
-        <Button
-            android:id="@+id/dec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="DEC" />
-
-        <Button
-            android:id="@+id/hex"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="HEX" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/outputData"
+        android:id="@+id/outputField2"
         android:layout_width="match_parent"
         android:layout_height="40dp" />
+    <TextView
+        android:id="@+id/outputField3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    <TextView
+        android:id="@+id/outputField4"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <Button
+        android:id="@+id/convert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Convert"
+        android:textAllCaps="false" />
 
 </LinearLayout>

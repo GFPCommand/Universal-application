@@ -12,6 +12,7 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
     <color name="primary_text">#212121</color>
-    <color name="black_amoled">#000000</color>
+    <color name="black">#000000</color>
     <color name="yellow">#fff000</color>
+    <color name="green">#5A9188</color>
 </resources>

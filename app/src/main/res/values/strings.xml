@@ -62,4 +62,5 @@
     <string name="plus_minus">+/-</string>
     <string name="plot">Plot</string>
     <string name="asterisk">*</string>
+    <string name="enter_values">enter values to convert</string>
 </resources>
