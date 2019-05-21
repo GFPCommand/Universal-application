@@ -19,7 +19,8 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
     private EditText input;
     private float inputData;
     private Boolean num = true, curr = false, len = false, b1 = true, b2 = false, b3 = false, b4 = false;
-    private TextView output1, output2, output3, output4;
+    private TextView output1, output2, output3, output4, warning;
+    private String warn = "This function is beta";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +39,11 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
         output2 = findViewById(R.id.outputField2);
         output3 = findViewById(R.id.outputField3);
         output4 = findViewById(R.id.outputField4);
+        warning = findViewById(R.id.textView);
 
-        converter  = findViewById(R.id.convert);
-        input      = findViewById(R.id.inputData);
+        converter = findViewById(R.id.convert);
+        input     = findViewById(R.id.inputData);
+
         numSys     = findViewById(R.id.numericSystems);
         currencies = findViewById(R.id.currencies);
         length     = findViewById(R.id.length);
@@ -52,51 +55,62 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
             b2 = false;
             b3 = false;
             b4 = false;
+            Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
         });
         but2.setOnClickListener(v -> {
             b1 = false;
             b2 = true;
             b3 = false;
             b4 = false;
+            Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
         });
         but3.setOnClickListener(v -> {
             b1 = false;
             b2 = false;
             b3 = true;
             b4 = false;
+            Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
         });
         but4.setOnClickListener(v -> {
             b1 = false;
             b2 = false;
             b3 = false;
             b4 = true;
+            Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
         });
 
-        if (numSys.isChecked()){
+        numSys.setOnClickListener(v -> {
             but1.setText("bin");
             but2.setText("oct");
             but3.setText("dec");
             but4.setText("hex");
+            warning.setText(warn);
             curr = false;
             len  = false;
             num  = true;
-        } else if (currencies.isChecked()){
+        });
+
+        currencies.setOnClickListener(v -> {
             but1.setText("USD");
             but2.setText("EUR");
             but3.setText("RUB");
             but4.setText("CNY");
+            warning.setText(warn);
             curr = true;
             len  = false;
             num  = false;
-        } else if (length.isChecked()) {
+        });
+
+        length.setOnClickListener(v -> {
             but1.setText("mm");
-            but2.setText("sm");
+            but2.setText("cm");
             but3.setText("m");
             but4.setText("km");
+            warning.setText("");
             curr = false;
             len = true;
             num = false;
-        }
+        });
     }
 
     @Override
@@ -111,25 +125,29 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
         if (num) {
 
             if (b1 && !b2 && !b3 && !b4) {
-
+                //TODO
             } else if (!b1 && b2 && !b3 && !b4) {
-
+                //TODO
             } else if (!b1 && !b2 && b3 && !b4) {
-
+                int inpData = (int) inputData;
+                output1.setText(Integer.toBinaryString(Integer.parseInt(String.valueOf(inpData))));
+                output2.setText(Integer.toOctalString(Integer.parseInt(String.valueOf(inpData))));
+                output3.setText(String.valueOf(inpData));
+                output4.setText(Integer.toHexString(Integer.parseInt(String.valueOf(inpData))));
             } else if (!b1 && !b2 && !b3 && b4) {
-
+                //TODO
             }
 
         } else if (curr) {
 
             if (b1 && !b2 && !b3 && !b4) {
-
+                //TODO
             } else if (!b1 && b2 && !b3 && !b4) {
-
+                //TODO
             } else if (!b1 && !b2 && b3 && !b4) {
-
+                //TODO
             } else if (!b1 && !b2 && !b3 && b4) {
-
+                //TODO
             }
 
         } else if (len) {
