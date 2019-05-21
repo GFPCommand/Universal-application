@@ -15,7 +15,6 @@ public class FlashActivity extends AppCompatActivity implements View.OnClickList
     private Button flashActivate;
     private TextView status;
     private boolean activate = false;
-    private static Camera camera = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +25,16 @@ public class FlashActivity extends AppCompatActivity implements View.OnClickList
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         flashActivate = findViewById(R.id.flashAct);
+        status = findViewById(R.id.status);
 
         flashActivate.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view){
-        if (camera == null) {
-            camera = Camera.open();
-        }
+
+        Camera camera = Camera.open();
+
         Camera.Parameters parameters = camera.getParameters();
         if (!activate) {
             parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);

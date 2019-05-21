@@ -113,6 +113,14 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
         });
     }
 
+    public void ToBinary(float data){
+        int []d = new int[input.length()];
+
+        for (int i = 0; i < d.length; i++) {
+
+        }
+    }
+
     @Override
     public void onClick (View view) {
 
