@@ -91,30 +91,86 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/out1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="8"
+            android:text="BIN"
+            android:textAlignment="center" />
+
+        <TextView
             android:id="@+id/outputField1"
             android:layout_width="match_parent"
-            android:layout_height="40dp" />
+            android:layout_height="40dp"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/outputField2"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
-    <TextView
-        android:id="@+id/outputField3"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/out2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="8"
+            android:text="OCT"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/outputField2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
-    <TextView
-        android:id="@+id/outputField4"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/out3"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="8"
+            android:text="DEC"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/outputField3"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/out4"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="8"
+            android:text="HEX"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/outputField4"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/convert"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Convert"
+        android:text="@string/convert"
         android:textAllCaps="false" />
 
     <TextView

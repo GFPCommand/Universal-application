@@ -19,7 +19,7 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
     private EditText input;
     private float inputData;
     private Boolean num = true, curr = false, len = false, b1 = true, b2 = false, b3 = false, b4 = false;
-    private TextView output1, output2, output3, output4, warning;
+    private TextView output1, output2, output3, output4, out1, out2, out3, out4, warning;
     private String warn = "This function is beta";
 
     @Override
@@ -34,6 +34,11 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
         but2 = findViewById(R.id.but2);
         but3 = findViewById(R.id.but3);
         but4 = findViewById(R.id.but4);
+
+        out1 = findViewById(R.id.out1);
+        out2 = findViewById(R.id.out2);
+        out3 = findViewById(R.id.out3);
+        out4 = findViewById(R.id.out4);
 
         output1 = findViewById(R.id.outputField1);
         output2 = findViewById(R.id.outputField2);
@@ -84,6 +89,11 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
             but2.setText("oct");
             but3.setText("dec");
             but4.setText("hex");
+            out1.setText("BIN");
+            out2.setText("OCT");
+            out3.setText("DEC");
+            out4.setText("HEX");
+            input.setText("");
             warning.setText(warn);
             curr = false;
             len  = false;
@@ -91,10 +101,15 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
         });
 
         currencies.setOnClickListener(v -> {
-            but1.setText("USD");
-            but2.setText("EUR");
-            but3.setText("RUB");
+            but1.setText("RUB");
+            but2.setText("USD");
+            but3.setText("EUR");
             but4.setText("CNY");
+            out1.setText("RUB");
+            out2.setText("USD");
+            out3.setText("EUR");
+            out4.setText("CNY");
+            input.setText("");
             warning.setText(warn);
             curr = true;
             len  = false;
@@ -106,6 +121,11 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
             but2.setText("cm");
             but3.setText("m");
             but4.setText("km");
+            out1.setText("mm");
+            out2.setText("cm");
+            out3.setText("m");
+            out4.setText("km");
+            input.setText("");
             warning.setText("");
             curr = false;
             len = true;
@@ -130,7 +150,7 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
             return;
         }
 
-        if (num) {
+        if (num) {//конвертер для систем счисления (сс) будет готов в скором времени, так как за короткий срок не удается правильно сделать конвертирование и получение данных в некоторых сс.
 
             if (b1 && !b2 && !b3 && !b4) {
                 //TODO
@@ -146,38 +166,50 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
                 //TODO
             }
 
-        } else if (curr) {
+        } else if (curr) {//конвертер валют будет готов в скором времени, так как за короткий срок не удается правильно подключаться к API. В данный момент используются примерные величины
 
             if (b1 && !b2 && !b3 && !b4) {
-                //TODO
+                output1.setText(String.valueOf(inputData));
+                output2.setText(String.valueOf(inputData * 0.015));
+                output3.setText(String.valueOf(inputData * 0.014));
+                output4.setText(String.valueOf(inputData * 0.11));
             } else if (!b1 && b2 && !b3 && !b4) {
-                //TODO
+                output1.setText(String.valueOf(inputData * 64.54));
+                output2.setText(String.valueOf(inputData));
+                output3.setText(String.valueOf(inputData * 0.9));
+                output4.setText(String.valueOf(inputData * 6.92));
             } else if (!b1 && !b2 && b3 && !b4) {
-                //TODO
+                output1.setText(String.valueOf(inputData * 71.97));
+                output2.setText(String.valueOf(inputData * 1.12));
+                output3.setText(String.valueOf(inputData));
+                output4.setText(String.valueOf(inputData * 7.71));
             } else if (!b1 && !b2 && !b3 && b4) {
-                //TODO
+                output1.setText(String.valueOf(inputData * 9.33));
+                output2.setText(String.valueOf(inputData * 0.14));
+                output2.setText(String.valueOf(inputData * 0.13));
+                output4.setText(String.valueOf(inputData));
             }
 
         } else if (len) {
             if (b1 && !b2 && !b3 && !b4) {
                 output1.setText(String.valueOf(inputData));
-                output2.setText(String.valueOf(inputData * 10));
-                output3.setText(String.valueOf(inputData * 1_000));
-                output4.setText(String.valueOf(inputData * 1_000_000));
-            } else if (!b1 && b2 && !b3 && !b4) {
-                output1.setText(String.valueOf(inputData / 10));
-                output2.setText(String.valueOf(inputData));
-                output3.setText(String.valueOf(inputData * 100));
-                output4.setText(String.valueOf(inputData * 100_000));
-            } else if (!b1 && !b2 && b3 && !b4) {
-                output1.setText(String.valueOf(inputData / 1_000));
-                output2.setText(String.valueOf(inputData / 100));
-                output3.setText(String.valueOf(inputData));
-                output4.setText(String.valueOf(inputData * 1_000));
-            } else if (!b1 && !b2 && !b3 && b4) {
-                output1.setText(String.valueOf(inputData / 1_000_000));
-                output2.setText(String.valueOf(inputData / 100_000));
+                output2.setText(String.valueOf(inputData / 10));
                 output3.setText(String.valueOf(inputData / 1_000));
+                output4.setText(String.valueOf(inputData / 1_000_000));
+            } else if (!b1 && b2 && !b3 && !b4) {
+                output1.setText(String.valueOf(inputData * 10));
+                output2.setText(String.valueOf(inputData));
+                output3.setText(String.valueOf(inputData / 100));
+                output4.setText(String.valueOf(inputData / 100_000));
+            } else if (!b1 && !b2 && b3 && !b4) {
+                output1.setText(String.valueOf(inputData * 1_000));
+                output2.setText(String.valueOf(inputData * 100));
+                output3.setText(String.valueOf(inputData));
+                output4.setText(String.valueOf(inputData / 1_000));
+            } else if (!b1 && !b2 && !b3 && b4) {
+                output1.setText(String.valueOf(inputData * 1_000_000));
+                output2.setText(String.valueOf(inputData * 100_000));
+                output3.setText(String.valueOf(inputData * 1_000));
                 output4.setText(String.valueOf(inputData));
             }
         }
