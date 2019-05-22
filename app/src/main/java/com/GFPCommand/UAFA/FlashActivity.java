@@ -2,6 +2,7 @@ package com.GFPCommand.UAFA;
 
 import android.content.pm.ActivityInfo;
 import android.hardware.Camera;
+import android.hardware.Camera.Parameters;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,12 +10,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class FlashActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button flashActivate;
     private TextView status;
     private boolean activate = false;
+    private Camera camera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,18 +35,25 @@ public class FlashActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view){
-
-        Camera camera = Camera.open();
-
-        Camera.Parameters parameters = camera.getParameters();
-        if (!activate) {
-            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-            status.setText("Off");
-        } else {
-            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
-            status.setText("On");
+        if (camera != null) {
+            camera.release();
         }
-        camera.setParameters(parameters);
-        camera.startPreview();
+        try {
+            camera = Camera.open();
+            Parameters params = camera.getParameters();
+            if (activate){
+                params.setFlashMode(Parameters.FLASH_MODE_TORCH);
+                camera.setParameters(params);
+                camera.startPreview();
+                status.setText("Flash on");
+            } else {
+                params.setFlashMode(Parameters.FLASH_MODE_OFF);
+                camera.setParameters(params);
+                camera.stopPreview();
+                status.setText("Flash off");
+            }
+        } catch (RuntimeException e) {
+            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+        }
     }
 }
