@@ -1,78 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="clip_horizontal|fill_horizontal"
-        android:layout_weight="2">
-
-        <Button
-            android:id="@+id/calc"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="115dp"
-            android:layout_height="115dp"
-            android:layout_marginLeft="75dp"
-            android:layout_marginTop="100dp"
-            android:text="Calculator"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/flash"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="115dp"
-            android:layout_height="115dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="100dp"
-            android:text="Flashlight"
-            android:textAllCaps="false" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="clip_horizontal|fill_horizontal"
-        android:layout_weight="1">
-
-        <Button
-            android:id="@+id/protractor"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="115dp"
-            android:layout_height="115dp"
-            android:layout_marginLeft="75dp"
-            android:layout_marginTop="50dp"
-            android:layout_weight="0"
-            android:text="Protractor"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/convert"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="115dp"
-            android:layout_height="115dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="50dp"
-            android:layout_weight="0"
-            android:text="Converter"
-            android:textAllCaps="false" />
-
-    </LinearLayout>
-</LinearLayout>-->
-
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:columnCount="2"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:orientation="vertical">
 
     <Button android:text="Calculator"
         android:id="@+id/calc"

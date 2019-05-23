@@ -18,6 +18,7 @@ public class FlashActivity extends AppCompatActivity implements View.OnClickList
     private TextView status;
     private boolean activate = false;
     private Camera camera;
+    private Camera.Parameters params;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +35,15 @@ public class FlashActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    public void onClick(View view){
+    public void onClick(View view) {
         if (camera != null) {
             camera.release();
+            params = camera.getParameters();
         }
+
         try {
-            camera = Camera.open();
-            Parameters params = camera.getParameters();
-            if (activate){
-                params.setFlashMode(Parameters.FLASH_MODE_TORCH);
+            if (activate) {
+                params.setFlashMode(Parameters.FLASH_MODE_ON);
                 camera.setParameters(params);
                 camera.startPreview();
                 status.setText("Flash on");
