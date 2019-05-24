@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
-        <Button
+        <ToggleButton
             android:id="@+id/flashAct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

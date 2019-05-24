@@ -146,7 +146,7 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
 
         inputData = Float.parseFloat(input.getText().toString());
         if (input.length() == 0){
-            Toast.makeText(getApplicationContext(),"Error", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Input field can't be empty", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -166,7 +166,7 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
                 //TODO
             }
 
-        } else if (curr) {//конвертер валют будет готов в скором времени, так как за короткий срок не удается правильно подключаться к API. В данный момент используются примерные величины
+        } else if (curr) {//конвертер валют будет готов в скором времени, так как за короткий срок не удается правильно подключиться к API. В данный момент используются примерные величины
 
             if (b1 && !b2 && !b3 && !b4) {
                 output1.setText(String.valueOf(inputData));

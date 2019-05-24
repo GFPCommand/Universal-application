@@ -16,7 +16,6 @@ public class Calculator {
     private double previousSum = 0;
     private double currentSum = 0;
     private String currentDisplay = "";
-    //private String expressionUsedForParsing ="";
     private boolean isRadians = false;
     public Calculator() {
         addFunctions();

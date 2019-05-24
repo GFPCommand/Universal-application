@@ -1,25 +1,28 @@
 package com.GFPCommand.UAFA;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.pm.ActivityInfo;
-import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
+import android.content.pm.PackageManager;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraManager;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ToggleButton;
 
-public class FlashActivity extends AppCompatActivity implements View.OnClickListener {
+public class FlashActivity extends AppCompatActivity {
 
-    private Button flashActivate;
-    private TextView status;
-    private boolean activate = false;
-    private Camera camera;
-    private Camera.Parameters params;
+    private ToggleButton activate;
+    private boolean hasFlash, light;
 
+    @TargetApi(Build.VERSION_CODES.M)
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -28,33 +31,26 @@ public class FlashActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_flash);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        flashActivate = findViewById(R.id.flashAct);
-        status = findViewById(R.id.status);
+        activate = findViewById(R.id.flashAct);
+        final CameraManager cameraManager = (CameraManager) getSystemService(CAMERA_SERVICE);
 
-        flashActivate.setOnClickListener(this);
-    }
+        hasFlash = getPackageManager().hasSystemFeature(getPackageManager().FEATURE_CAMERA_FLASH);
+        light = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 60);
 
-    @Override
-    public void onClick(View view) {
-        if (camera != null) {
-            camera.release();
-            params = camera.getParameters();
-        }
+        activate.setOnClickListener(v -> {
+            try {
+                String cameraID = cameraManager.getCameraIdList()[0];
 
-        try {
-            if (activate) {
-                params.setFlashMode(Parameters.FLASH_MODE_ON);
-                camera.setParameters(params);
-                camera.startPreview();
-                status.setText("Flash on");
-            } else {
-                params.setFlashMode(Parameters.FLASH_MODE_OFF);
-                camera.setParameters(params);
-                camera.stopPreview();
-                status.setText("Flash off");
+                if (activate.isChecked()){
+                    cameraManager.setTorchMode(cameraID, true);
+                } else {
+                    cameraManager.setTorchMode(cameraID, false);
+                }
+            } catch (CameraAccessException e) {
+                e.printStackTrace();
             }
-        } catch (RuntimeException e) {
-            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
-        }
+        });
     }
 }
+47
