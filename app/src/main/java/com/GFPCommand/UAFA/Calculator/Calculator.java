@@ -66,11 +66,10 @@ public class Calculator {
         };
     }
     private int getFactorial(int n)    {
-        int result;
+        //int result;
         if(n==0 || n==1)
             return 1;
-        result = getFactorial(n-1) * n;
-        return result;
+        return getFactorial(n-1) * n;
     }
     public void addFunctions() {
         params = DoubleEvaluator.getDefaultParameters();
@@ -82,7 +81,6 @@ public class Calculator {
     }
     public String getResult(String currentDisplay, String expressionUsedForParsing) {
         try {
-            System.out.println("Displayed Output " + expressionUsedForParsing);
             currentSum = evaluator.evaluate(fixExpression(expressionUsedForParsing));
             currentSum = convertToRadians(currentSum);
             currentDisplay = String.valueOf(currentSum);

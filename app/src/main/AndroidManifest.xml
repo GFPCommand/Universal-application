@@ -12,15 +12,18 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon_app"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icon_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ConverterActivity"/>
-        <activity android:name=".ProtractorActivity" />
+        <activity android:name=".ConverterActivity"
+            android:label="Converter"/>
+        <activity android:name=".ProtractorActivity"
+            android:screenOrientation="landscape" />
         <activity android:name=".CalcActivity" />
-        <activity android:name=".FlashActivity" />
+        <activity android:name=".FlashActivity"
+            android:label="Flashlight"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

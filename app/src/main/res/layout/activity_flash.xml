@@ -5,17 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.GFPCommand.UAFA.FlashActivity">
+    tools:context="com.GFPCommand.UAFA.FlashActivity"
+    android:background="@color/green">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <TextView
+        <Button
+            android:id="@+id/backBut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:text="back" />
 
         <ToggleButton
             android:id="@+id/flashAct"

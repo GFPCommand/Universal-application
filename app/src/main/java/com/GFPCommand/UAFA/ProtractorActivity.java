@@ -15,6 +15,7 @@ public class ProtractorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_protractor);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        getSupportActionBar().hide();
 
         WindowManager.LayoutParams layout = getWindow().getAttributes();
         layout.screenBrightness = 1f;

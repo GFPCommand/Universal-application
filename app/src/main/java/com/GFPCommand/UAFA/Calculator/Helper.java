@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 public class Helper {
-    public static String division = "&divide;";
     public static String inverseSin = "sin<sup>-1</sup>";
     public static String inverseCos = "cos<sup>-1</sup>";
     public static String inverseTan = "tan<sup>-1</sup>";

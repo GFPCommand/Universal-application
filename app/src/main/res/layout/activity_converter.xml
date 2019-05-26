@@ -8,13 +8,27 @@
     tools:context="com.GFPCommand.UAFA.ConverterActivity"
     android:background="@color/green">
 
-    <EditText
-        android:id="@+id/inputData"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/enter_values"
-        android:inputType="numberDecimal|numberSigned" />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/backBut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:text="back" />
+
+        <EditText
+            android:id="@+id/inputData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_weight="2"
+            android:hint="@string/enter_values"
+            android:inputType="numberDecimal|numberSigned" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -176,6 +190,7 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="This function is beta" />
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.GFPCommand.UAFA;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -21,14 +22,14 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private TextView degreeRad;
     private boolean isDegree = false;
     private boolean isInverse = false;
-    private String lastResultObtain = "";
+    private String lastResult = "";
     private String currentDisplayedInput = "";
     private String inputToBeParsed = "";
     private Calculator mCalculator;
     private static String PREFS_NAME = "memory";
     private Button button0, button1, button2,button3,button4,button5,button6,button7,
             button8,button9,buttonClear, buttonDivide,buttonMultiply,buttonSubtract,
-            buttonAdd, buttonPercentage, buttonEqual, buttonDecimal, closeParenthesis, openParenthesis, buttonAnswer,
+            buttonAdd, buttonPercentage, buttonEqual, buttonDecimal, closeParenthesis, openParenthesis, buttonAnswer, backButton,
             buttonSingleDelete, buttonExp;
     private TextView labelFactorial, labelCombination, labelPermutation, labelPi, labelE, labelComma, labelCubeRoot, labelCube,
             labelInverseX, labelInverseSin, labelInverseCos, labelInverseTan, labelExponential, labelTenPowerX, labelRCL,
@@ -43,6 +44,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        getSupportActionBar().hide();
+
         mCalculator = new Calculator();
         outputResult = findViewById(R.id.display);
         outputResult.setText("");
@@ -76,10 +79,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         buttonLn = findViewById(R.id.natural_log);
         buttonLog = findViewById(R.id.log);
         buttonRnd = findViewById(R.id.hys);
-        buttonDivide.setText(Html.fromHtml(Helper.division));
-        buttonSquareRoot.setText(Html.fromHtml(Helper.squareRoot));
-        buttonXSquare.setText(Html.fromHtml(Helper.xSquare));
-        buttonYPowerX.setText(Html.fromHtml(Helper.yPowerX));
+        backButton = findViewById(R.id.backBut);
+
         buttonShift = findViewById(R.id.shift);
         buttonRad = findViewById(R.id.rad);
         buttonAbs = findViewById(R.id.abs);
@@ -108,6 +109,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         labelSTO = findViewById(R.id.sto);
         labelMMinus = findViewById(R.id.m_minus);
         labelFloat = findViewById(R.id.float_number);
+
+        buttonDivide.setText("/");
+        buttonSquareRoot.setText(Html.fromHtml(Helper.squareRoot));
+        buttonXSquare.setText(Html.fromHtml(Helper.xSquare));
+        buttonYPowerX.setText(Html.fromHtml(Helper.yPowerX));
         labelInverseSin.setText(Html.fromHtml(Helper.inverseSin));
         labelInverseCos.setText(Html.fromHtml(Helper.inverseCos));
         labelInverseTan.setText(Html.fromHtml(Helper.inverseTan));
@@ -116,6 +122,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         labelCubeRoot.setText(Html.fromHtml(Helper.cubeSquare));
         labelCube.setText(Html.fromHtml(Helper.cubeRoot));
         labelPi.setText(Html.fromHtml(Helper.pi));
+
         button0.setOnClickListener(this);
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
@@ -153,8 +160,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         buttonMr.setOnClickListener(this);
         buttonMs.setOnClickListener(this);
         buttonMPlus.setOnClickListener(this);
+        backButton.setOnClickListener(v -> startActivity(new Intent(CalcActivity.this, MainActivity.class)));
     }
-    private void obtainInputValues(String input){
+
+    private void InputValues(String input){
         switch (input){
             case "0":
                 currentDisplayedInput += "0";
@@ -168,8 +177,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     currentDisplayedInput += "1";
                     inputToBeParsed += "1";
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
             case "2":
                 if(isInverse){
@@ -179,8 +188,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     currentDisplayedInput += "2";
                     inputToBeParsed += "2";
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
             case "3":
                 if(isInverse){
@@ -190,8 +199,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     currentDisplayedInput += "3";
                     inputToBeParsed += "3";
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
             case "4":
                 if(isInverse){
@@ -201,8 +210,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     currentDisplayedInput += "4";
                     inputToBeParsed += "4";
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
             case "5":
                 if(isInverse){
@@ -212,8 +221,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     currentDisplayedInput += "5";
                     inputToBeParsed += "5";
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
             case "6":
                 if(isInverse){
@@ -223,8 +232,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     currentDisplayedInput += "6";
                     inputToBeParsed += "6";
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
             case "7":
                 currentDisplayedInput += "7";
@@ -250,7 +259,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 currentDisplayedInput += "-";
                 inputToBeParsed += "-";
                 break;
-            case "÷":
+            case "/":
                 currentDisplayedInput += "/";
                 inputToBeParsed += "/";
                 break;
@@ -274,8 +283,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     currentDisplayedInput += "%";
                     inputToBeParsed += "%";
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
             case "ln":
                 if(isInverse){
@@ -285,8 +294,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     currentDisplayedInput += "ln(";
                     inputToBeParsed += "ln(";
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
             case "log":
                 if(isInverse){
@@ -296,8 +305,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     currentDisplayedInput += "log(";
                     inputToBeParsed += "log(";
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
             case "√":
                 if(isInverse){
@@ -307,8 +316,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     currentDisplayedInput += "√(";
                     inputToBeParsed += "sqrt(";
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
             case "Yx":
                 currentDisplayedInput += "^";
@@ -322,8 +331,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     currentDisplayedInput += "sin(";
                     inputToBeParsed += "sin(";
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
             case "cos":
                 if(isInverse){
@@ -333,8 +342,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     currentDisplayedInput += "cos(";
                     inputToBeParsed += "cos(";
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
             case "tan":
                 if(isInverse){
@@ -344,8 +353,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     currentDisplayedInput += "tan(";
                     inputToBeParsed += "tan(";
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
             case "exp":
                 currentDisplayedInput += "E";
@@ -359,8 +368,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     currentDisplayedInput += "^2";
                     inputToBeParsed += "^2";
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
             case "rnd":
                 double ran = Math.random();
@@ -384,22 +393,23 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case "M+":
                 if (isInverse){
-                    double inputValueMinus  = isANumber(outputResult.getText().toString());
+                    double inputValueMinus  = isNumber(outputResult.getText().toString());
                     if(!Double.isNaN(inputValueMinus)){
-                        subtractMemoryStorage(CalcActivity.this, inputValueMinus);
+                        subtractMemory(CalcActivity.this, inputValueMinus);
                     }
                 }else{
-                    double inputValue  = isANumber(outputResult.getText().toString());
+                    double inputValue  = isNumber(outputResult.getText().toString());
                     if(!Double.isNaN(inputValue)){
-                        addToMemoryStorage(CalcActivity.this, inputValue);
+                        addToMemory(CalcActivity.this, inputValue);
                     }
                 }
-                toggleInverse();
-                toggleShiftButton();
+                inverse();
+                ShiftButton();
                 break;
         }
         outputResult.setText(currentDisplayedInput);
     }
+
     @Override
     public void onClick(View view) {
         Button button = (Button) view;
@@ -428,7 +438,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             }
             case "Ans": {
                 String enteredInput = outputResult.getText().toString();
-                enteredInput += lastResultObtain;
+                enteredInput += lastResult;
                 outputResult.setText(enteredInput);
                 break;
             }
@@ -438,7 +448,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     isInverse = false;
                 }
-                toggleShiftButton();
+                ShiftButton();
                 break;
             case "RAD":
                 buttonRad.setText("DEG");
@@ -449,10 +459,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 degreeRad.setText("DEG");
                 break;
             default:
-                obtainInputValues(data);
+                InputValues(data);
                 break;
         }
     }
+
     private String removeTrailingZero(String formattingInput){
         if(!formattingInput.contains(".")){
             return formattingInput;
@@ -464,19 +475,22 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         }
         return formattingInput;
     }
-    private void toggleInverse(){
+
+    private void inverse(){
         if(isInverse){
             isInverse = false;
         }
     }
-    private void toggleShiftButton() {
+
+    private void ShiftButton() {
         if (isInverse) {
             shiftDisplay.setText("SHIFT");
         } else {
             shiftDisplay.setText("");
         }
     }
-    private double isANumber(String numberInput){
+
+    private double isNumber(String numberInput){
         double result = Double.NaN;
         try{
             result = Double.parseDouble(numberInput);
@@ -484,12 +498,13 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         }
         return result;
     }
-    private void addToMemoryStorage(Context context, double inputToStore){
-        float returnPrefValue = getPreference(context);
-        float newValue = returnPrefValue + (float)inputToStore;
+
+    private void addToMemory(Context context, double inputToStore){
+        float PrefValue = getPreference(context);
+        float newValue = PrefValue + (float)inputToStore;
         setPreference(context, newValue);
     }
-    private void subtractMemoryStorage(Context context, double inputToStore){
+    private void subtractMemory(Context context, double inputToStore){
         float returnPrefValue = getPreference(context);
         float newValue = returnPrefValue - (float)inputToStore;
         setPreference(context, newValue);
@@ -497,16 +512,19 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private void clearMemoryStorage(Context context){
         setPreference(context, 0);
     }
+
     private String getStoredPreferenceValue(Context context){
         float returnedValue = getPreference(context);
         return String.valueOf(returnedValue);
     }
+
     static public boolean setPreference(Context c, float value) {
         SharedPreferences settings = c.getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putFloat("key", value);
         return editor.commit();
     }
+
     static public float getPreference(Context c) {
         SharedPreferences settings = c.getSharedPreferences(PREFS_NAME, 0);
         float value = settings.getFloat("key", 0);
